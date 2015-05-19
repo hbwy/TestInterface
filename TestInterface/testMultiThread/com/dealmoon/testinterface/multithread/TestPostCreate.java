@@ -21,8 +21,8 @@ import com.dealmoon.testinterface.PropertiesReader;
  */
 public class TestPostCreate {
 
-	private static final int NUM_THREAD = 500; // 测试线程总数
-	private static final int USER_COUNT = 125;// 用户token的数量
+	private static final int NUM_THREAD = 100; // 测试线程总数
+	private static final int USER_COUNT = 540;// 用户token的数量
 
 	private static List<String> reqJsons;
 
@@ -54,7 +54,6 @@ public class TestPostCreate {
 		@Override
 		public void runTest() throws Throwable {
 			String reqJson = "{" + MyUtils.getRandomToken() + reqJsons.get(1) + "}";
-			System.out.println(reqJson);
 			// textMap用于存文本,fileMap用于存图片
 			Map<String, String> textMap = new HashMap<String, String>();
 			Map<String, String> fileMap = new HashMap<String, String>();

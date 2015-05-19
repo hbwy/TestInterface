@@ -18,10 +18,10 @@ import com.sun.jersey.core.util.Base64;
 
 public class TestUserRegister {
 
-	private static final int NUM_THREAD = 200; //执行的次数
+	private static final int NUM_THREAD = 10; //执行的次数
 	private static List<String> reqJsons;
 	private static Map<String, Object> reqData;
-	private static int count = 202;
+	private static int count = 920;
 
 	// 初始化,根据接口名从配置文件中读取requestData
 	@BeforeClass
@@ -46,7 +46,8 @@ public class TestUserRegister {
 
 	// 测试线程类定义
 	private class ChildThread extends TestRunnable {
-
+		Count cc = new Count();
+		
 		@Override
 		public void runTest() throws Throwable {
 			String reqJson = "{" + reqJsons.get(0) + "}";
@@ -61,10 +62,12 @@ public class TestUserRegister {
 				e.printStackTrace();
 			}
 
-			reqJson = reqJson.replace("\"name\":\"" + username + "\",", "\"name\":\"" + "菠萝" + count + "\",")
-					.replace("\"email\":\"" + email + "\",", "\"email\":\"bl" + count + "@wy.com" + "\",")
+			reqJson = reqJson.replace("\"name\":\"" + username + "\",", "\"name\":\"" + "hmg" + count + "\",")
+					.replace("\"email\":\"" + email + "\",", "\"email\":\"hmg" + count + "@wy.com" + "\",")
 					.replace("\"password\":\"" + _password + "\"", "\"password\":\"" + password + "\"");
-			count++;
+			synchronized (cc) {
+				cc.ccount();
+			}
 			String response = MyUtils.sendPost(reqJson);
 			System.out.println(response);
 			try {
@@ -73,7 +76,13 @@ public class TestUserRegister {
 			} catch (JSONException e) {
 				System.out.println(e.getMessage());
 			}
-			Thread.currentThread().sleep(5000);
+			Thread.sleep(5000);
+		}
+	}
+
+	private class Count {
+		public void ccount() {
+			count++;
 		}
 	}
 

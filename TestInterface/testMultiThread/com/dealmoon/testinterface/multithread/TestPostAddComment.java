@@ -28,8 +28,8 @@ import com.dealmoon.testinterface.PropertiesReader;
  */
 public class TestPostAddComment {
 
-	private static final int NUM_THREAD = 10; // 测试线程总数
-	private static final int USER_COUNT = 197;// 用户token的数量
+	private static final int NUM_THREAD = 100; // 测试线程总数
+	private static final int USER_COUNT = 540;// 用户token的数量
 
 	private static List<String> reqJsons;
 	private static Map<String, Object> reqData;

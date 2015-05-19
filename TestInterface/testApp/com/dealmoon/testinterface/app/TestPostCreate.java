@@ -37,6 +37,7 @@ public class TestPostCreate {
 	@Test
 	public void testCodeZero() {
 		String response = this.getReqJsonResponse("{" + token + reqJsons.get(0) + "}");
+		System.out.println(response);
 		int code = JSONObject.fromObject(response).getJSONObject("result").getInt("code");
 
 		Assert.assertEquals("Error:The result code is not 0", 0, code);

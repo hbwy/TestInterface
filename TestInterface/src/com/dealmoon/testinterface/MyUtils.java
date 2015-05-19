@@ -53,7 +53,7 @@ import org.bouncycastle.util.encoders.Base64;
  * @description:工具类
  */
 public class MyUtils {
-	private final static String url = "http://api2.test.dealmoon.net";
+	private final static String url = "http://api2.apps.dealmoon.com";
 	/**
 	 * 替换字符串中的空白字符,例如换行/空格/回车等
 	 * 
@@ -130,7 +130,7 @@ public class MyUtils {
 	 * 
 	 * @param token token中有用户id,采用截取字符串的形式拿到id
 	 */
-	public static void writeUserIdToken(String token) {
+	public static synchronized void writeUserIdToken(String token) {
 		String filename = "pro/token.properties";
 		HashMap<String, String> map = new HashMap<String, String>();
 		String[] id_token = token.split("\\|");
