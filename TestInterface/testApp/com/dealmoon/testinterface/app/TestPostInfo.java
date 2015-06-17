@@ -29,7 +29,7 @@ public class TestPostInfo {
 	public static void init() {
 		Map<String, Object> reqData = PropertiesReader.getAppRequestData();
 		reqJsons = (List<String>) reqData.get("postinfo");
-
+ 
 		// 随机获取一个最新的post
 		List<Integer> postIds = MyUtils.getPostList("new", 1, 20);
 		postId = postIds.get(new Random().nextInt(postIds.size() - 1));
@@ -39,7 +39,6 @@ public class TestPostInfo {
 	@Test
 	public void testCodeZero() {
 		String response = this.getReqJson0Response();
-		System.out.println(response);
 		int code = JSONObject.fromObject(response).getJSONObject("result").getInt("code");
 		Assert.assertEquals("Error:The result code is not 0", 0, code);
 	}

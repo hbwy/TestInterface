@@ -33,7 +33,6 @@ public class TestHashTagRecommends {
 	@Test
 	public void testCodeZero() {
 		String response = this.getReqJson0Response();
-
 		int code = JSONObject.fromObject(response).getJSONObject("result").getInt("code");
 
 		Assert.assertEquals("Error:The result code is not 0", 0, code);

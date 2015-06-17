@@ -65,7 +65,7 @@ public class TestPostGetList {
 	}
 
 	private String getReqJson0Response() {
-		String reqJson0 = "{" + token + reqJsons.get(0) + "}";
+		String reqJson0 = "{" + token+ reqJsons.get(0) + "}";
 		return MyUtils.sendPost(reqJson0);
 	}
 }

@@ -12,7 +12,7 @@
 
 	<!--测试报告所在目录-->
 	<property name="report" value="report" />
-	
+
 	<!--运行日志所在目录-->
 	<property name="log" value="log" />
 
@@ -46,7 +46,7 @@
 			<classpath refid="jar.path">
 			</classpath>
 		</javac>
-	<!--<javac srcdir="${testBackend}" destdir="${output}" includeantruntime="on" encoding="GBK">
+		<!--<javac srcdir="${testBackend}" destdir="${output}" includeantruntime="on" encoding="GBK">
 			<classpath refid="jar.path">
 			</classpath>
 		</javac>
@@ -57,9 +57,9 @@
 		<copy todir="${output}">
 			<fileset dir="${testApp}" includes="*.xml">
 			</fileset>
-	<!--	<fileset dir="${testBackend}" includes="*.xml">
+			<!--	<fileset dir="${testBackend}" includes="*.xml">
 			</fileset>
-	-->		
+	-->
 		</copy>
 	</target>
 
@@ -75,26 +75,24 @@
 			<!--brief：以文本格式提供测试失败的详细内容，plain：以文本格式提供测试失败的详细内容以及每个测试的运行统计，
 			    xml：以xml格式提供扩展的详细内容，包括正在测试时ant的特性，系统输出，以及每个测试用例的系统错误 -->
 			<formatter type="plain" usefile="false" />
-	<!--    <formatter type="xml" />   -->
+			<formatter type="xml" />
 			<batchtest todir="${report}">
 				<fileset dir="${output}">
 					<include name="**/Test*.*" />
 				</fileset>
 			</batchtest>
-	
+
 		</junit>
-	<!--
 		<junitreport todir="${report}">
 			<fileset dir="${report}">
 				<include name="TEST-*.xml" />
 			</fileset>
 			<report format="frames" todir="${report}" />
 		</junitreport>
-	-->
 	</target>
-	
+
 	<!--记录运行日志运行日志-->
-	<tstamp/>
+	<tstamp />
 	<record name="${log}/${DSTAMP}${TSTAMP}.log" loglevel="info" append="no" action="start" />
 
 

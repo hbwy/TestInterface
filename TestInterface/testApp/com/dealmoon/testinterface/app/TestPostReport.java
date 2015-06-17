@@ -52,8 +52,8 @@ public class TestPostReport {
 		Assert.assertEquals("Error:result code 不为 0", 0, code);
 	}
 
-	// 验证同一晒单被不同用户举报三次不能查询到
-	// 不同用户举报同一晒单三次，post被隐藏，编辑和自己可见 用三个用户举报同一晒单 晒单本人 查看 可见 其他用户查看 不可见
+	// 验证同一晒单被不同用户举报6次不能查询到
+	// 不同用户举报同1晒单6次，post被隐藏，编辑和自己可见  用6个用户举报同1晒单 晒单本人 查看 可见 其他用户查看 不可见
 	@Test
 	public void testNotFind() {
 		String reportJson = reqJsons.get(0);
@@ -64,7 +64,7 @@ public class TestPostReport {
 		}
 		String response = MyUtils.getPostInfo(postId);
 		JSONObject responseData = JSONObject.fromObject(response).getJSONObject("responseData");
-		Assert.assertTrue("Error:The responseData is not null", responseData.isNullObject());
+		Assert.assertTrue("Error:Failure to report", responseData.isNullObject());
 
 	}
 
@@ -86,6 +86,7 @@ public class TestPostReport {
 
 	private String getReqJson0Response() {
 		String reqJson0 = "{" + MyUtils.getRandomToken(post_userId) + reqJsons.get(0) + "}";
+		reqJson0 = MyUtils.replaceIdinBackCommand(reqJson0, postId);
 		return MyUtils.sendPost(reqJson0);
 	}
 

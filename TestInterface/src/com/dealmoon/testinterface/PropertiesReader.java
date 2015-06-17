@@ -35,7 +35,8 @@ public class PropertiesReader {
 	private static Map<String, Object> appRequestData = new HashMap<String, Object>(); //app端请求数据
 	private static Map<String, List<String>> backendRequestData = new HashMap<String, List<String>>(); //后台请求数据
 	private static Map<String, String> tokens = new HashMap<String, String>();
-
+	private static Map<String, String> config = new HashMap<String, String>(); //配置文件
+	
 	public static Map<String, Object> getAppRequestData() {
 		return appRequestData;
 	}
@@ -48,6 +49,10 @@ public class PropertiesReader {
 		return tokens;
 	}
 
+	public static Map<String, String> getConfig() {
+		return config;
+	}
+	
 	//读取app端请求数据
 	static {
 		// 文件都是相对路径下的,默认的目录为工程根目录,o文件夹为配置文件存储的文件夹
@@ -108,6 +113,7 @@ public class PropertiesReader {
 	static {
 		String token_path = "pro/token.properties";
 		tokens = proReader(token_path);
+		config = proReader("pro/config.properties");
 	}
 
 	/**

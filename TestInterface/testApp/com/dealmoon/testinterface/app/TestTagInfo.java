@@ -71,6 +71,21 @@ public class TestTagInfo {
 		Assert.assertFalse("Error:The hashtag is null", brand.isNullObject());
 		Assert.assertTrue("Error:The posts array is null", size >= 0);
 	}
+	
+	// 验证tag type=brand brand不存在  返回brand结构和post数组 都不能为null
+	//	@Test
+	//	public void testBrandNoExist(){
+	//		String reqJson1 = "{" + reqJsons.get(6) + "}";
+	//		String reqType = JSONObject.fromObject(reqJson1).getJSONObject("commandInfo").getString("type");
+	//		String response = MyUtils.sendPost(reqJson1);
+	//		String resType = JSONObject.fromObject(response).getJSONObject("responseData").getString("type");
+	//		JSONObject brand = JSONObject.fromObject(response).getJSONObject("responseData").getJSONObject("brand");
+	//		int size = JSONObject.fromObject(response).getJSONObject("responseData").getJSONArray("posts").size();
+	//
+	//		Assert.assertEquals("Error:The type error", reqType, resType);
+	//		Assert.assertFalse("Error:The hashtag is null", brand.isNullObject());
+	//		Assert.assertTrue("Error:The posts array is null", size >= 0);
+	//	}
 
 	// 验证tag type=store 返回store结构和post数组 都不能为null
 	@Test

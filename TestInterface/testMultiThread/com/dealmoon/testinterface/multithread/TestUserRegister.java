@@ -18,10 +18,10 @@ import com.sun.jersey.core.util.Base64;
 
 public class TestUserRegister {
 
-	private static final int NUM_THREAD = 10; //执行的次数
+	private static final int NUM_THREAD = 100; //执行的次数
 	private static List<String> reqJsons;
 	private static Map<String, Object> reqData;
-	private static int count = 920;
+	private static int count = 0;
 
 	// 初始化,根据接口名从配置文件中读取requestData
 	@BeforeClass
@@ -62,8 +62,8 @@ public class TestUserRegister {
 				e.printStackTrace();
 			}
 
-			reqJson = reqJson.replace("\"name\":\"" + username + "\",", "\"name\":\"" + "hmg" + count + "\",")
-					.replace("\"email\":\"" + email + "\",", "\"email\":\"hmg" + count + "@wy.com" + "\",")
+			reqJson = reqJson.replace("\"name\":\"" + username + "\",", "\"name\":\"" + "nana" + count + "\",")
+					.replace("\"email\":\"" + email + "\",", "\"email\":\"na" + count + "@wy.com" + "\",")
 					.replace("\"password\":\"" + _password + "\"", "\"password\":\"" + password + "\"");
 			synchronized (cc) {
 				cc.ccount();
